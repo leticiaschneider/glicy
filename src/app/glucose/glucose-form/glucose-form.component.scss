@@ -1,0 +1,315 @@
+input {
+    width: 75%;
+}
+
+.btn-primary {
+    img {
+        padding-right: 10px;
+        width: 10px;
+    }
+}
+
+.create {
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.form {
+    width: 100%;
+    padding: 50px;
+    border: 2px solid #afd7ce;
+    border-radius: 10px 0px 0px 10px;
+    margin: 0px auto;
+}
+
+.cover-right {
+    img {
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+.form-row {
+    display: flex;
+}
+
+.form-single {
+    label {
+        margin-bottom: 2px;
+    }
+
+    width: 98%;
+}
+
+.form-group {
+    margin: 10px 0px;
+    width: 50%;
+}
+
+.input-icon {
+    position: relative;
+
+    input {
+        width: 45%;
+        border-radius: 3px 0px 0px 3px;
+    }
+
+    span {
+        position: absolute;
+        top: 5px;
+        padding: 1.6px 5px;
+        background:#afd7ce;
+        border: 1px solid #7c7c7c;
+        border-left: 0;
+        border-radius: 0px 3px 3px 0px;
+        box-shadow: 2px 1px 9px -5px;
+    }
+}
+
+.wrapper {
+    display: inline-flex;
+    height: 40px;
+    width: 94%;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 5px;
+    padding: 20px 0px;
+
+    .option {
+        height: 70%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 0 10px;
+        border: 2px solid lightgrey;
+        transition: all 0.3s ease;
+    }
+
+    .option .dot {
+        height: 14px;
+        width: 14px;
+        background: #d9d9d9;
+        border-radius: 50%;
+        position: relative;
+    }
+
+    .option .dot::before {
+        position: absolute;
+        content: "";
+        top: 2px;
+        left: 2px;
+        width: 10px;
+        height: 10px;
+        background: #f6ab8b;
+        border-radius: 50%;
+        opacity: 0;
+        transform: scale(1.5);
+        transition: all 0.3s ease;
+    }
+
+    .option span {
+        font-size: 14px;
+        color: #808080;
+    }
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.before {
+    margin-right: 20px;
+}
+
+#before:checked:checked ~ .before,
+#after:checked:checked ~ .after {
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+    border-color: #afd7ce;
+    background: #afd7ce;
+}
+
+#before:checked:checked ~ .before .dot,
+#after:checked:checked ~ .after .dot {
+    background: #fff;
+}
+
+#before:checked:checked ~ .before .dot::before,
+#after:checked:checked ~ .after .dot::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#before:checked:checked ~ .before span,
+#after:checked:checked ~ .after span {
+    color: #fff;
+}
+
+.boxtags {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10px;
+
+    li {
+        display: inline-block;
+        background-color: rgba(255, 255, 255, 0.9);
+        border: 1px solid #8b8b8b;
+        color: #adadad;
+        border-radius: 25px;
+        white-space: nowrap;
+        margin: 3px 0px;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        transition: all 0.2s;
+
+        margin-right: 9px;
+        margin-top: 8px;
+    }
+
+    li label {
+        padding: 2px 10px;
+        cursor: pointer;
+        line-height: 24px;
+        font-size: 12px;
+        color: #000;
+    }
+
+    li label::before {
+        display: inline-block;
+        width: 10px;
+        padding: 2px 6px 2px 2px;
+        line-height: 14px;
+        content: url("../../../assets/icons/plus-solid.svg");
+        transition: transform 0.3s ease-in-out;
+    }
+
+    li.selectedMeal label::before,
+    li.selectedHumor label::before {
+        content: url("../../../assets/icons/check-solid.svg");
+        transform: rotate(-360deg);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    li.selectedMeal {
+        border: none;
+        background-color: #afd7ce;
+        color: #fff;
+        transition: all 0.2s;
+    }
+
+    li.selectedHumor {
+        border: none;
+        background-color: #ffcdb6;
+        color: #fff;
+        transition: all 0.2s;
+    }
+
+    li input[type="checkbox"] {
+        display: none;
+    }
+}
+
+.accordion {
+    padding: 0;
+    margin: 0;
+    margin: 25px 0;
+    list-style: none outside;
+}
+
+.accordion > * + * {
+    border-top: 1px solid white;
+}
+
+.accordion-item-hd {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 2px solid #f6ab8b;
+}
+
+.accordion-item-input:checked ~ .accordion-item-bd {
+    max-height: 1000px;
+    padding-top: 10px;
+    margin-bottom: 15px;
+    -webkit-transition: max-height 1s ease-in, margin 0.3s ease-in, padding 0.3s ease-in;
+    transition: max-height 1s ease-in, margin 0.3s ease-in, padding 0.3s ease-in;
+}
+
+.accordion-item-input:checked ~ .accordion-item-hd > .accordion-item-hd-cta {
+    -webkit-transform: rotate(0);
+    -ms-transform: rotate(0);
+    transform: rotate(0);
+}
+
+.accordion-item-hd-cta {
+    display: block;
+    width: 30px;
+    position: absolute;
+    top: calc(50% - 6px);
+    /*minus half font-size*/
+    right: 0;
+    pointer-events: none;
+    -webkit-transition: -webkit-transform 0.3s ease;
+    transition: transform 0.3s ease;
+    -webkit-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    text-align: center;
+    font-size: 12px;
+    line-height: 1;
+}
+
+.accordion-item-bd {
+    max-height: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+    -webkit-transition: max-height 0.15s ease-out, margin-bottom 0.3s ease-out, padding 0.3s ease-out;
+    transition: max-height 0.15s ease-out, margin-bottom 0.3s ease-out, padding 0.3s ease-out;
+}
+
+.accordion-item-input {
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1;
+    overflow: hidden;
+    position: absolute;
+    left: -9999px;
+}
+
+@media screen and (max-width: 768px) {
+    .wrap {
+        flex-wrap: wrap-reverse;
+    }
+
+    .cover-right {
+        height: 299px;
+        width: 100%;
+        img {
+            height: inherit;
+            border-radius: 10px 10px 0px 0px;
+        }
+    }
+
+    .form {
+        border-radius: 0px 0px 10px 10px;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .cover-right {
+        img {
+            height: 100%;
+            border-radius: 0px 10px 10px 0px;
+        }
+    }
+}

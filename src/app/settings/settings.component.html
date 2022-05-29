@@ -1,0 +1,195 @@
+<section>
+
+    <div class="message d-flex justify-space-between" *ngIf="showSucessMessage">
+        <p> Data automatically saved </p>
+        <img (click)="closeMessage()" src="../../assets/icons/times-circle-solid.svg" />
+    </div>
+
+
+    <h2 class="title mt-20">Settings</h2>
+
+    <div class="d-flex justify-center">
+        <div class="tabs">
+
+            <div class="tab">
+                <input type="checkbox" id="chck1">
+                <label class="tab-label" for="chck1">Geral</label>
+                <div class="tab-content">
+
+                    <div>
+                        <label class="pt-20" for="observations">Insulin Therapy:</label>
+                        <div class="d-flex typeDiabetes">
+                            <div class="box">
+                                <input id="type1" type="radio" name="typeDiabetes" value="type1"
+                                    [(ngModel)]="configValues.typeDiabetes" (change)="saveSettings()">
+                                <label for="type1" class="option type1">Type 1</label>
+                            </div>
+                            <div class="box">
+                                <input id="type2" type="radio" name="typeDiabetes" value="type2"
+                                    [(ngModel)]="configValues.typeDiabetes" (change)="saveSettings()">
+                                <label for="type2" class="option type2">Type 2</label>
+                            </div>
+                            <div class="box">
+                                <input id="lada" type="radio" name="typeDiabetes" value="lada"
+                                    [(ngModel)]="configValues.typeDiabetes" (change)="saveSettings()">
+                                <label for="lada" class="option lada">LADA</label>
+                            </div>
+                            <div class="box">
+                                <input id="mody" type="radio" name="typeDiabetes" value="mody"
+                                    [(ngModel)]="configValues.typeDiabetes" (change)="saveSettings()"> 
+                                <label for="mody" class="option mody">MODY</label>
+                            </div>
+                            <div class="box">
+                                <input id="gestational" type="radio" name="typeDiabetes" value="gestational"
+                                    [(ngModel)]="configValues.typeDiabetes" (change)="saveSettings()">
+                                <label for="gestational" class="option gestational">Gestational</label>
+                            </div>
+                            <div class="box">
+                                <input id="prediabetes" type="radio" name="typeDiabetes" value="prediabetes"
+                                    [(ngModel)]="configValues.typeDiabetes" (change)="saveSettings()">
+                                <label for="prediabetes" class="option prediabetes">Prediabetes</label>
+                            </div>
+                            <div class="box">
+                                <input id="other" type="radio" name="typeDiabetes" value="other"
+                                    [(ngModel)]="configValues.typeDiabetes" (change)="saveSettings()">
+                                <label for="other" class="option other">Other</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="tab">
+                <input type="checkbox" id="blood-glucose-measurement">
+                <label class="tab-label" for="blood-glucose-measurement">Blood glucose measurement</label>
+                <div class="tab-content">
+
+                    <div>
+                        <h4 class="txt-center pt-20">What units do you use?</h4>
+                        <label for="observations">Glucose:</label>
+                        <div class="d-flex">
+                            <div class="box">
+                                <input id="mgdL" type="radio" name="bloodGlucose" value="mgdL"
+                                    [(ngModel)]="configValues.bloodGlucose" (change)="saveSettings()">
+                                <label for="mgdL" class="option mgdL">mg/dL</label>
+                            </div>
+                            <div class="box">
+                                <input id="mmolL" type="radio" name="bloodGlucose" value="mmolL"
+                                    [(ngModel)]="configValues.bloodGlucose" (change)="saveSettings()">
+                                <label for="mmolL" class="option mmolL">mmol/L</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-20">
+                        <h4 class="txt-center pt-20">What are your desired values?</h4>
+
+                        <div class="form-row ">
+                            <label for="date">Maximum Hypoglycemia:</label>
+                            <input type="number" class="form-control" name="date" (change)="saveSettings()"
+                                [(ngModel)]="configValues.hypoglycemia" [min]="0" [max]="100">
+                        </div>
+
+                        <div class="form-row ">
+                            <div class="d-flex align-center">
+                                <div class="form-values mr-45">
+                                    <label for="date">Minimum Desired range:</label>
+                                    <input type="number" class="form-control" name="date" (change)="saveSettings()"
+                                        [(ngModel)]="configValues.desiredRangeMin" [min]="50" [max]="200">
+                                </div>
+                                <div class="form-values">
+                                    <label for="time">Maximum Desired range:</label>
+                                    <input type="number" class="form-control" name="time" (change)="saveSettings()"
+                                        [(ngModel)]="configValues.desiredRangeMax" [min]="50" [max]="200">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row ">
+                            <label for="date">Minimum Hyperglycemia:</label>
+                            <input type="number" class="form-control" name="date" (change)="saveSettings()"
+                                [(ngModel)]="configValues.hyperglycemia" [min]="150" [max]="250">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="tab">
+                <input type="checkbox" id="chck2">
+                <label class="tab-label" for="chck2">Insulin Therapy</label>
+                <div class="tab-content">
+
+                    <div>
+                        <label class="pt-20" for="observations">Insulin Therapy:</label>
+                        <div class="d-flex">
+                            <div class="box">
+                                <input id="devices" type="radio" name="insulinTherapy" value="devices"
+                                    [(ngModel)]="configValues.insulinTherapy" (change)="saveSettings()">
+                                <label for="devices" class="option devices">Pen injectors/Syringes</label>
+                            </div>
+                            <div class="box">
+                                <input id="insulinPumps" type="radio" name="insulinTherapy" value="insulinPumps"
+                                    [(ngModel)]="configValues.insulinTherapy" (change)="saveSettings()"> 
+                                <label for="insulinPumps" class="option insulinPumps">Insulin pumps</label>
+                            </div>
+                            <div class="box">
+                                <input id="noInsulin" type="radio" name="insulinTherapy" value="noInsulin"
+                                    [(ngModel)]="configValues.insulinTherapy" (change)="saveSettings()">
+                                <label for="noInsulin" class="option noInsulin">No insulin</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-20">
+                        <label class="pt-20" for="observations">Pills:</label>
+                        <div class="d-flex">
+                            <div class="box">
+                                <input id="yes" type="radio" name="medicine" value="yes"
+                                    [(ngModel)]="configValues.medicine" (change)="saveSettings()">
+                                <label for="yes" class="option yes">Yes</label>
+                            </div>
+                            <div class="box">
+                                <input id="no" type="radio" name="medicine" value="no"
+                                    [(ngModel)]="configValues.medicine" (change)="saveSettings()">
+                                <label for="no" class="option no">No</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="tab">
+                <input type="checkbox" id="chck3">
+                <label class="tab-label" for="chck3">Aliment</label>
+                <div class="tab-content">
+                    <div>
+                        <label for="observations">Carbohydrates:</label>
+                        <div class="d-flex">
+                            <div class="box">
+                                <input id="g" type="radio" name="carbohydrates" value="g"
+                                    [(ngModel)]="configValues.carbohydrates" (change)="saveSettings()">
+                                <label for="g" class="option g">g</label>
+                            </div>
+                            <div class="box">
+                                <input id="ex" type="radio" name="carbohydrates" value="ex"
+                                    [(ngModel)]="configValues.carbohydrates" (change)="saveSettings()">
+                                <label for="ex" class="option ex">Ex.</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-center mt-20 mb-20">
+        <span>
+            Glicy - all rights reserved @ v1.0.0
+        </span>
+    </div>
+</section>

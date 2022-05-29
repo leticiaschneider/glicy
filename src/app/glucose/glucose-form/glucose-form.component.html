@@ -1,0 +1,149 @@
+<section>
+
+    <div class="d-flex align-center justify-space-between p-lr-50 mt-20">
+        <button class="btn btn-primary d-flex" [routerLink]="['/glucose']">
+            <img src="../../../assets/icons/chevron-left-solid.svg" />
+            back
+        </button>
+        <h2 class="title">Register your blood glucose</h2>
+    </div>
+
+    <div class="d-flex create p-lr-50 mt-20 wrap">
+        <div class="form">
+
+            <!--
+                Colocar limite na observação
+            -->
+
+            <form (ngSubmit)="onSubmit(glucoseData)">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" class="form-control" name="date" [(ngModel)]="glucoseData.date">
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Hour</label>
+                        <input type="time" class="form-control" name="time" [(ngModel)]="glucoseData.hour"
+                            (blur)="verifyEventByHour(glucoseData.hour)">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="bloodGlucoseLevel">Blood glucose level</label>
+                        <div class="input-icon">
+                            <input type="number" class="form-control" id="bloodGlucoseLevel" name="bloodGlucoseLevel"
+                                [(ngModel)]="glucoseData.bloodGlucoseLevel" min="1">
+                            <span>{{configValues.bloodGlucose}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="carbohydrates">Carbohydrates</label>
+                        <div class="input-icon">
+                            <input type="number" class="form-control" [(ngModel)]="glucoseData.carbohydrates"
+                                id="carbohydrates" name="carbohydrates" min="0">
+                            <span>{{configValues.carbohydrates}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wrapper">
+                    <input type="radio" name="select" id="before" [(ngModel)]="glucoseData.beforeOrAfter"
+                        value="before">
+                    <input type="radio" name="select" id="after" [(ngModel)]="glucoseData.beforeOrAfter" value="after">
+                    <label for="before" class="option before">
+                        <div class="dot"></div>
+                        <span>Before</span>
+                    </label>
+                    <label for="after" class="option after">
+                        <div class="dot"></div>
+                        <span>After</span>
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <ul class="boxtags">
+                        <ng-container *ngFor="let meal of events.meal; let i = index">
+                            <li [ngClass]="meal.checked ? 'selectedMeal' : ''" (click)="checkItem(meal, 'meal')">
+                                <input type="checkbox" id="checkboxOne{{i}}" name="checkboxOne{{i}}"
+                                    [(ngModel)]="meal.checked" [checked]="meal.checked" [value]="meal.type">
+                                <label for="checkboxOne">
+                                    {{meal.type}}
+                                </label>
+                            </li>
+                        </ng-container>
+
+                        <ng-container *ngFor="let humor of events.humor; let i = index">
+                            <li [ngClass]="humor.checked ? 'selectedHumor' : ''" (click)="checkItem(humor, 'humor')">
+                                <input type="checkbox" id="checkboxOneO{{i}}" name="checkboxOneO{{i}}"
+                                    [(ngModel)]="humor.checked" [checked]="humor.checked" [value]="humor.type">
+                                <label for="checkboxOne">
+                                    {{humor.type}}
+                                </label>
+                            </li>
+                        </ng-container>
+                    </ul>
+                </div>
+
+                <div class="form-row" *ngIf="configValues.insulinTherapy != 'noInsulin' && !configValues.medicine">
+                    <div class="form-single">
+                        <ul class="accordion css-accordion">
+                            <li class="accordion-item">
+
+                                <input class="accordion-item-input" type="checkbox" name="accordion" id="insulin" />
+                                <label for="insulin" class="accordion-item-hd">Insulin<span
+                                        class="accordion-item-hd-cta">&#9650;</span></label>
+                                <div class="accordion-item-bd">
+                                    <div class="form-row" *ngIf="configValues.insulinTherapy != 'noInsulin'">
+                                        <div class="form-group">
+                                            <label for="insulinBasal">Basal</label>
+                                            <input type="number" class="form-control" name="insulinBasal" min="0"
+                                                [(ngModel)]="glucoseData.basal" (keyup)="onlyNumbers($event)">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="insulinBolus">Bolus</label>
+                                            <input type="number" class="form-control" name="insulinBolus" min="0"
+                                                [(ngModel)]="glucoseData.bolus" (keyup)="onlyNumbers($event)">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row" *ngIf="configValues.medicine">
+                                        <div class="form-group">
+                                            <label for="medicineName">Medicine Name</label>
+                                            <input type="text" class="form-control" name="medicineName"
+                                                [(ngModel)]="glucoseData.medicine.name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="carbohydrates">Quantity</label>
+                                            <input type="number" class="form-control" name="carbohydrates" min="0"
+                                                [(ngModel)]="glucoseData.medicine.quantity"
+                                                (keyup)="onlyNumbers($event)">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-single">
+                        <label for="observations">Observations</label>
+                        <textarea [(ngModel)]="glucoseData.observations" name="observations"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-row pull-right mt-20">
+                    <button type="button" class="btn btn-secundary mr-15" (click)="cancel()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="cover-right">
+            <img src="../../../assets/images/pexels-photo-6942039.jpeg" />
+        </div>
+    </div>
+
+</section>

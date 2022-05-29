@@ -1,0 +1,169 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: "Lato Italic";
+    src: URL("./assets/fonts/Lato-Italic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Lato Regular";
+    src: URL("./assets/fonts/Lato-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "ZenAntique Regular";
+    src: URL("./assets/fonts/ZenAntique-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Open Sans Regular";
+    src: URL("./assets/fonts/OpenSans-Variable.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Open Sans Italic";
+    src: URL("./assets/fonts/OpenSans-Italic-Variable.ttf") format("truetype");
+}
+
+body {
+    background-color: #fafafa;
+    font-family: "Open Sans Regular";
+}
+
+label,
+textarea {
+    display: block;
+    width: 100%;
+    resize: none;
+}
+
+input {
+    padding: 5px;
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid #7c7c7c;
+    margin-top: 5px;
+}
+
+textarea {
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #7c7c7c;
+}
+
+label {
+    font-size: 14px;
+}
+
+.content {
+    background-color: #fff;
+    box-shadow: 3px 3px 7px 0px #f6ab8b30;
+    width: 100%;
+}
+
+.txt-center {
+    text-align: center;
+}
+
+h2 {
+    font-family: "Circular-Loom";
+}
+
+.title {
+    text-align: center;
+    color: #f6ab8b;
+}
+
+.btn {
+    outline: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+
+    &.btn-primary {
+        background-color: #f6ab8b;
+        border: none;
+    }
+
+    &.btn-secundary {
+        border: 1px solid #f6ab8b;
+        background-color: transparent;
+    }
+
+    &:hover {
+        background-color: #ffcdb6;
+    }
+}
+
+.d-flex {
+    display: flex;
+
+    &.align-center {
+        align-items: center;
+    }
+
+    &.justify-space-between {
+        justify-content: space-between;
+    }
+
+    &.justify-center {
+        justify-content: center;
+    }
+
+    &.justify-evenly {
+        justify-content: space-evenly;
+    }
+}
+
+.pull-right {
+    float: right;
+}
+
+.pull-left {
+    float: left;
+}
+
+.m-20 {
+    margin: 20px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.mr-15 {
+    margin-right: 15px;
+}
+
+.mr-45 {
+    margin-right: 45px;
+}
+
+.p-25 {
+    padding: 25px;
+}
+
+.pt-20 {
+    padding-top: 20px;
+}
+
+.p-lr-50 {
+    padding: 0 50px;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.loading {
+    background: #ffffff url("./assets/images/loading.gif") center no-repeat !important;
+    cursor: wait;
+    * {
+        opacity: 0.6;
+        border-color: transparent !important;
+    }
+}

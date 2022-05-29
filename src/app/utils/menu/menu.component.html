@@ -1,0 +1,26 @@
+<div class="menu">
+    <ul role="menu" tabindex="0">
+        <li role="menuitem" routerLinkActive="menuActive" [routerLink]="['/dashboard']">Dashboard</li>
+        <li role="menuitem" routerLinkActive="menuActive" [routerLink]="['/glucose']">Glucose</li>
+        <li role="menuitem" routerLinkActive="menuActive" [routerLink]="['/meal-planning']">Meal Planning</li>
+        <li role="menuitem" routerLinkActive="menuActive" [routerLink]="['/reports']">Reports</li>
+        <li role="menuitem" routerLinkActive="menuActive" [routerLink]="['/settings']">Settings</li>
+    </ul>
+</div>
+
+
+<div class="mobile-menu">
+    <input type="checkbox" id="hamburger-menu" [(ngModel)]="checked"/>
+    <label for="hamburger-menu" id="hamburger-menu">
+        <span></span>
+    </label>
+    <div id="menuItens">
+        <ul>
+            <li><a href="#" [routerLink]="['/dashboard']" (click)="closeMenu()">Dashboard</a></li>
+            <li><a href="#" [routerLink]="['/glucose']" (click)="closeMenu()">Glucose</a></li>
+            <li><a href="#" [routerLink]="['/meal-planning']" (click)="closeMenu()">Meal Planning</a></li>
+            <li><a href="#" [routerLink]="['/reports']" (click)="closeMenu()">Reports</a></li>
+            <li><a href="#" [routerLink]="['/settings']" (click)="closeMenu()">Settings</a></li>
+        </ul>
+    </div>
+</div>

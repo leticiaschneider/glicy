@@ -1,0 +1,28 @@
+<div slider id="slider-distance">
+    <div>
+        <div inverse-left style="width: 100%;"> </div>
+        <div inverse-right style="width: 100%;"></div>
+        <div *ngIf="typeGlucose == 'Desired range'" range [style.left.%]="percentMinValue"
+            [style.right.%]="inversePercentMaxValue"></div>
+        <div *ngIf="typeGlucose == 'Hyperglycemia'" range [style.left.%]="percentMaxValue" style="right: -1%;"></div>
+        <div *ngIf="typeGlucose == 'Hypoglycemia'" range [style.right.%]="inversePercentMinValue" style="left: -1%;">
+        </div>
+        <span *ngIf="typeGlucose == 'Desired range'|| typeGlucose == 'Hypoglycemia'" thumb
+            [style.left.%]="percentMinValue"></span>
+        <span *ngIf="typeGlucose == 'Desired range' || typeGlucose == 'Hyperglycemia'" thumb
+            [style.left.%]="percentMaxValue"></span>
+        <div *ngIf="typeGlucose == 'Desired range'|| typeGlucose == 'Hypoglycemia'" sign
+            [style.left.%]="percentMinValue">
+            <span id="value">{{minValue}}</span>
+        </div>
+        <div *ngIf="typeGlucose == 'Desired range' || typeGlucose == 'Hyperglycemia'" sign
+            [style.left.%]="percentMaxValue">
+            <span id="value">{{maxValue}}</span>
+        </div>
+    </div>
+    <input *ngIf="typeGlucose == 'Desired range'|| typeGlucose == 'Hypoglycemia'" type="range" tabindex="0" [max]="max"
+        [min]="min" [value]="minValue" step="1" (input)="actionMinValue($event)" />
+
+    <input *ngIf="typeGlucose == 'Desired range' || typeGlucose == 'Hyperglycemia'" type="range" tabindex="0"
+        [max]="max" [min]="min" [value]="maxValue" step="1" (input)="actionMaxValue($event)" />
+</div>

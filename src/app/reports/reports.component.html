@@ -1,0 +1,13 @@
+<div class="p-25">
+    <h3>Blood glucose today</h3>
+    <chart type="doughnut" [data]="daySummary" [options]="options" *ngIf="isDataExisteForToday"></chart>
+    <div class="no-message" *ngIf="!isDataExisteForToday">
+        <h4>No measurements today</h4>
+        <button class="btn btn-primary btn-register" [routerLink]="['/glucose/new']">Register blood glucose</button>
+    </div>
+</div>
+
+<div class="p-25">
+    <h3>Blood glucose in the last 7 days</h3>
+    <chart type="line" [data]="weekSummary" [options]="options" *ngIf="glucoseData"></chart>
+</div>

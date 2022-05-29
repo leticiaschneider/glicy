@@ -1,0 +1,71 @@
+<section>
+    <div class="header-infos mt-20">
+        <input class="input-month" type="month" id="start" name="start" min="2020-01" [(ngModel)]="filterDate"
+            (change)="filterByDate()">
+        <button class="btn btn-primary btn-register" [routerLink]="['/glucose/new']">Register blood glucose</button>
+    </div>
+
+    <div class="container p-lr-50 mt-20" *ngIf="(glucoseDataShow.length > 0)">
+        <div class="scroll" [class.loading]="isLoading">
+            <table class="table" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Event</th>
+                        <th>Glucose</th>
+                        <th>Status</th>
+                        <th>Observtion</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of glucoseDataShow">
+                        <td> <span [innerText]="item.date | date:'dd/MM/yy' "></span></td>
+                        <td>{{item.hour}}</td>
+
+                        <td>
+                            <ng-container *ngFor="let meal of item.events.meal">
+                                <p class="tag" *ngIf="meal.checked">{{meal.type}}</p>
+                            </ng-container>
+                        </td>
+
+                        <td>{{item.bloodGlucoseLevel}}</td>
+
+                        <td>
+                            <span class="tag hypo" *ngIf="item.bloodGlucoseLevel < 80">Hypoglycemia</span>
+                            <span class="tag target"
+                                *ngIf="item.bloodGlucoseLevel >= 80 && item.bloodGlucoseLevel <= 130">Target
+                                Range</span>
+                            <span class="tag hyper" *ngIf="item.bloodGlucoseLevel > 130">Hyperglycemia </span>
+                        </td>
+
+                        <td>{{item.observations}}</td>
+
+                        <td>
+                            <div class="icon" (click)="editItem(item)">
+                                <img src="../../assets/icons/pen-solid.svg" />
+                            </div>
+                        </td>
+                        <td>
+                            <div class="icon" (click)="openModal(item)">
+                                <img src="../../assets/icons/trash-solid.svg" />
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <app-pagination [paginatorConfig]="paginatorPendency" (changePage)="getList($event)"></app-pagination>
+    </div>
+
+    <div *ngIf="glucoseDataShow.length === 0" class="no-data">
+        <span>
+            <img width="400" src="../../assets/images/nodata.svg" />
+        </span>
+    </div>
+</section>
+
+<!-- MODAL -->
+<app-modal [info]="modalInfoRemove" (uploaded)="removeItem()"></app-modal>

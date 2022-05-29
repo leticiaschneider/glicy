@@ -1,0 +1,93 @@
+<div class="container">
+
+    <ng-container *ngFor="let item of questionsAndAnswers">
+        <div class="box-question" *ngIf="item.next && !item.last">
+            <div *ngFor="let answer of item.answersAndQuestions">
+                <h4>{{answer.question}}</h4>
+                <div class="form-group" *ngFor="let answersSecond of answer.answersSecond">
+
+                    <input type="radio" [(ngModel)]="answers[answersSecond.type]" [name]="answersSecond.type"
+                        [id]="answersSecond.value" [value]="answersSecond.value" (change)="checkIfHasErrors(item)">
+
+                    <label [for]="answersSecond.value" class="option {{answersSecond.value}}">
+                        <span>{{answersSecond.description}}</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-20" *ngIf="!item.next && item.last">
+            <h4 class="txt-center">{{item.question}}</h4>
+
+            <div class="form-row border-values">
+                <label>Hypoglycemia:</label>
+                <div class="d-flex align-center">
+
+                    <div class="w-50">
+                        <app-range-slider [min]="0" [max]="100" minValue="79"
+                            typeGlucose="Hypoglycemia" (getNewValues)="changeValue($event, 'hypoglycemia')">
+                        </app-range-slider>
+                    </div>
+                    <div class="form-row d-flex w-50">
+                        <div class="form-values m-20">
+                            <label for="date">Maximum</label>
+                            <input type="number" class="form-control" name="date" [(ngModel)]="answers.hypoglycemia" [min]="0" [max]="100">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-row border-values">
+                <label>Desired range:</label>
+                <div class="d-flex align-center">
+                    <div class="w-50">
+                        <app-range-slider [min]="50" [max]="200" minValue="80"
+                            maxValue="120" typeGlucose="Desired range" (getNewValues)="changeValue($event, 'desiredRange')">
+                        </app-range-slider>
+                    </div>
+
+                    <div class="form-row d-flex w-50">
+                        <div class="form-values m-20">
+                            <label for="date">Minimum</label>
+                            <input type="number" class="form-control" name="date" [(ngModel)]="answers.desiredRangeMin" [min]="50" [max]="200">
+                        </div>
+                        <div class="form-values m-20">
+                            <label for="time">Maximum</label>
+                            <input type="number" class="form-control" name="time" [(ngModel)]="answers.desiredRangeMax" [min]="50" [max]="200">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row border-values">
+                <label>Hyperglycemia:</label>
+                <div class="d-flex align-center">
+                    <div class="w-50">
+                        <app-range-slider [min]="150" [max]="250" maxValue="190"
+                            typeGlucose="Hyperglycemia" (getNewValues)="changeValue($event, 'hyperglycemia')">
+                        </app-range-slider>
+                    </div>
+                    <div class="form-row d-flex w-50">
+                        <div class="form-values m-20">
+                            <label for="date">Minimum</label>
+                            <input type="number" class="form-control" name="date" [(ngModel)]="answers.hyperglycemia" [min]="150" [max]="250">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="errors" *ngIf="item.error">
+            <span>Please select an option before proceeding</span>
+        </div>
+
+    </ng-container>
+
+    <div class="box-button">
+        <button type="button" class="btn btn-primary" *ngIf="!questionsAndAnswers[0]?.next"
+            (click)="previousQuestion()">Previous</button>
+        <button type="button" class="btn btn-primary" *ngIf="!lastArrived" (click)="nextQuestion()">Next</button>
+        <button type="button" class="btn btn-primary" *ngIf="lastArrived" (click)="finishQuestion()">Finish</button>
+    </div>
+</div>

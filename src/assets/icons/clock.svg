@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 66 87" style="enable-background:new 0 0 66 87;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#AFD7CE;}
+</style>
+<title>clock</title>
+<circle class="st0" cx="33" cy="37.5" r="29"/>
+<path d="M33,32.5c-12.7,0-23,10.3-23,23s10.3,23,23,23s23-10.3,23-23S45.7,32.5,33,32.5z M33,34.5c11.6,0,21,9.4,21,21
+	s-9.4,21-21,21s-21-9.4-21-21S21.4,34.5,33,34.5z M33,37.5c-0.6,0-1,0.4-1,1v14.2c-1.2,0.4-2,1.6-2,2.8c0,0.4,0.1,0.9,0.3,1.3l-6,6
+	c-0.4,0.4-0.3,1,0.1,1.4c0.4,0.3,0.9,0.3,1.3,0l0,0l6-6c0.4,0.2,0.8,0.3,1.3,0.3c1.7,0,3-1.4,3-3c0-1.3-0.8-2.4-2-2.8V38.5
+	C34,37.9,33.5,37.5,33,37.5L33,37.5z"/>
+</svg>

@@ -1,0 +1,44 @@
+.summary-container {
+    display: flex;
+
+    .summary-information {
+        display: flex;
+
+        .box {
+            border: 2px solid #ffcdb6;
+            padding: 10px 45px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 4px 3px 2px #e5e5e5;
+            margin-right: 30px;
+        
+            .blood-glucose,
+            .txt-reminder {
+                margin: 0;
+                font-size: 45px;
+                font-weight: bold;
+            }
+        
+            .last {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                img {
+                    width: 22px;
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+
+    .img-new {
+        margin-top: 66px;
+    
+        img {
+            cursor: pointer;
+            object-fit: cover;
+            height: 230px;
+            border-radius: 5px;
+        }
+    }
+}

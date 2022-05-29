@@ -1,0 +1,31 @@
+<h2 class="title">Weekly Meal Planner</h2>
+
+<ng-container *ngFor="let meal of mealPlan">
+    <div class="mealplan">
+
+        <div class="dayOfWeek">
+            <h2>{{meal.dayOfWeek}}</h2>
+        </div>
+
+        <ng-container *ngFor="let mealItem of mealList">
+            <div class="EatItem">
+                <h2>{{meal[mealItem].title}}</h2>
+                <div>
+                    <span *ngIf="!meal[mealItem].editOpen" (click)="openInput(meal, mealItem)">
+                        {{meal[mealItem].description}}
+                    </span>
+
+                    <textarea class="input-text" name="textarea" [(ngModel)]="meal[mealItem].description"
+                        (keyup)="autoGrowTextZone($event)" #mealInput *ngIf="meal[mealItem].editOpen"
+                        (focusout)="openInput(meal, mealItem)"></textarea>
+
+                </div>
+                <span class="addNewMeal" (click)="openInput(meal, mealItem)">
+                    <img *ngIf="!meal[mealItem].editOpen" src="../../assets/icons/plus-solid.svg" />
+                    <img *ngIf="meal[mealItem].editOpen" src="../../assets/icons/check-solid.svg" />
+                </span>
+            </div>
+        </ng-container>
+
+    </div>
+</ng-container>

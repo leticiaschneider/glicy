@@ -1,0 +1,11 @@
+<div class="container" *ngIf="config.finished">
+  <div class="sidebar">
+      <app-menu></app-menu>
+  </div>
+
+  <div class="content">
+      <router-outlet></router-outlet>
+  </div>
+</div>
+
+<app-questions *ngIf="!config.finished" (showDash)="showDash()"></app-questions>

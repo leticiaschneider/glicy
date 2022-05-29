@@ -1,0 +1,129 @@
+.header-infos {
+  display: flex;
+  padding: 0 50px;
+}
+
+.btn-register {
+  height: 38px;
+  padding: 6px 25px;
+}
+
+table {
+  width: 100%;
+  border: none;
+  border-spacing: 0 20px;
+  font-size: 12px;
+}
+
+thead {
+  border-spacing: 0 10px;
+  text-align: left;
+}
+
+.table {
+  thead tr th:first-child {
+    width: 20vh;
+  }
+
+  tbody tr {
+    background-color: #fafafa;
+    box-shadow: 3px 4px 7px 0 #b2b2b2;
+    font-size: 22px;
+    border: none;
+  }
+
+  tbody tr td {
+    border: none;
+    padding: 10px 5px;
+    font-size: 14px;
+  }
+
+  td:first-child,
+  th:first-child {
+    border-radius: 5px 0 0 5px;
+  }
+
+  td:last-child,
+  th:last-child {
+    border-radius: 0 5px 5px 0;
+  }
+}
+
+.icon {
+  cursor: pointer;
+
+  &:last-of-type {
+    margin-right: 5px;
+  }
+
+  img {
+    width: 15px;
+  }
+}
+
+.tag {
+  border-radius: 5px;
+  padding: 2px 10px;
+
+  &.hypo {
+    background-color: #f6ab8b;
+  }
+
+  &.target {
+    background-color: #bae2df;
+  }
+
+  &.hyper {
+    background-color: #f56a63;
+  }
+}
+
+.input-month {
+  padding: 5px;
+  border-radius: 3px;
+  outline: none;
+  border: 1px solid #7c7c7c;
+  margin-top: 5px;
+}
+
+.no-data {
+  text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+  .header-infos {
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .input-month {
+      margin: 20px;
+    }
+  }
+}
+@media screen and (max-width: 557px) {
+  .scroll {
+    overflow-x: scroll;
+  }
+}
+
+@media screen and (min-width: 481px) {
+  .header-infos {
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .no-data {
+    img {
+      width: 80%;
+    }
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .no-data {
+    img {
+      width: 400px;
+    }
+  }
+}

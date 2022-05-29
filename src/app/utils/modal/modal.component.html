@@ -1,0 +1,20 @@
+<ng-container *ngIf="showModal">
+    <div class="modal">
+        <div class="modal-header">
+            {{info.title}}
+            <div class="close" (click)="toggle()">
+                <img src="../../assets/icons/times-circle-regular.svg" />
+            </div>
+        </div>
+        <div class="modal-body">
+            {{info.body}}
+        </div>
+        <div class="modal-buttons">
+            <div class="pull-right mt-20">
+                <button type="button" (click)="toggle()" class="btn btn-secundary mr-15">Cancel</button>
+                <button type="submit" (click)="confirm()" class="btn btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+    <div (click)="toggle()" class="overlay"></div>
+</ng-container>

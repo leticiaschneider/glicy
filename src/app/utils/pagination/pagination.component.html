@@ -1,0 +1,57 @@
+<nav class="center-list clear">
+  <ul class="pagination" *ngIf="paginationArray">
+
+    <li class="total no-margin txt-cinza2 txt-small" *ngIf="showTotal" [innerText]="itemTotal + ' resultados'">
+    </li>
+
+    <li class="control first" [ngClass]="paginationArray.length ? '' : 'hide'">
+      <a aria-label="primeira" (click)="onClickBackward(1)" [ngClass]="currentPage == 1 ? 'hide' : ''">
+        <span aria-hidden="true" class="icon-double">
+          <img src="../../../assets/icons/angle-double-left-solid.svg" />
+        </span>
+      </a>
+    </li>
+
+    <li class="control" [ngClass]="paginationArray.length ? '' : 'hide'">
+      <a aria-label="anterior" [ngClass]="currentPage == 1 ? 'hide' : ''"
+        (click)="movePages(currentPage - 1, 'backward');">
+        <span aria-hidden="true" class="icon">
+          <img src="../../../assets/icons/angle-left-solid.svg" />
+        </span>
+      </a>
+    </li>
+
+    <li class="pull-left" *ngFor="let pageNumber of pagination">
+      <a [ngClass]="{'active': currentPage === pageNumber}" [innerText]="pageNumber"
+        (click)="movePages(pageNumber, (pageNumber > currentPage) ? 'forward' : 'backward');"></a>
+    </li>
+
+    <li class="control" [ngClass]="paginationArray.length ? '' : 'hide'">
+      <a aria-label="proxima" [ngStyle]="currentPage == pageTotal ? {'color':'transparent'} : {}"
+        [ngClass]="currentPage == pageTotal ? 'hide' : ''" (click)="movePages(currentPage + 1, 'forward');">
+        <span aria-hidden="true" class="icon">
+          <img src="../../../assets/icons/angle-right-solid.svg" />
+        </span>
+      </a>
+    </li>
+
+    <li class="control last" [ngClass]="paginationArray.length ? '' : 'hide'">
+      <a aria-label="ultima" [ngStyle]="currentPage == pageTotal ? {'color':'transparent'} : {}"
+        [ngClass]="currentPage == pageTotal ? 'hide' : ''" (click)="onClickForward(pageTotal)">
+        <span aria-hidden="true" class="icon-double">
+          <img src="../../../assets/icons/angle-double-right-solid.svg" />
+        </span>
+      </a>
+    </li>
+
+    <li class="pull-left search" *ngIf="showSearch && paginationArray.length > 1">
+      <input type="number" placeholder="nº da página" min="0" [class.focus]="pageSearch.pageNumber !== null"
+        (keyup)="inputKeyUp($event)" [(ngModel)]="pageSearch.pageNumber">
+      <a id="btn-go" [ngClass]="pageSearch.pageNumber !== null ? 'txt-bold green-txt' : ''"
+        (click)="onClickGoToPage()">ir</a>
+      <p class="red-txt txt-center txt-small no-margin clear"
+        *ngIf="pageSearch.errorMsg && pageSearch.pageNumber !== null" [innerText]="pageSearch.errorMsg"></p>
+    </li>
+
+  </ul>
+</nav>

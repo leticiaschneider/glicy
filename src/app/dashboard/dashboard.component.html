@@ -1,0 +1,46 @@
+<section class="p-25">
+
+    <div class="summary-container">
+        <div>
+            <h4>Summary</h4>
+
+            <div class="summary-information">
+                <div class="box">
+
+                    <img width="70px" src="../../assets/icons/blood.png" />
+
+                    <h4>Last measurement</h4>
+
+                    <div class="last" *ngIf="glucoseData.length > 0">
+                        <span class="blood-glucose">{{ glucoseData[glucoseData.length -1].bloodGlucoseLevel }}</span>
+
+                        <img *ngIf="glucoseData[0].bloodGlucoseLevel <=  configValues.hypoglycemia"
+                            src="../../assets/icons/arrow-circle-down-solid.svg" />
+                        <img *ngIf="glucoseData[0].bloodGlucoseLevel >= configValues.hypoglycemia && glucoseData[0].bloodGlucoseLevel <= configValues.hyperglycemia"
+                            src="../../assets/icons/arrow-circle-up-solid.svg" />
+                        <img *ngIf="glucoseData[0].bloodGlucoseLevel >= configValues.hyperglycemia"
+                            src="../../assets/icons/check-circle-solid.svg" />
+                    </div>
+                </div>
+
+
+                <div class="box">
+                    <img width="60px" src="../../assets/icons/clock.svg" />
+                    <h4>Next measurement</h4>
+                    <p class="txt-reminder">14:00</p>
+                </div>
+
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="img-new">
+                <img src="../../assets/images/cta.jpg" [routerLink]="['/glucose/new']"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex">
+        <h4>Report</h4>
+    </div>
+    <chart [type]="type" [data]="data" [options]="options"></chart>
+</section>

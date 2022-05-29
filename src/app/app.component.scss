@@ -1,0 +1,28 @@
+@media screen and (max-width: 768px) {
+    .content {
+        padding: 20px 0;
+        margin-top: 100px;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .content {
+        max-width: 1057px;
+    }
+}
+
+.teste {
+    color: #ffcdb6;
+    color: #f6ab8b;
+    color: #afd7ce;
+    color: #68a9a3;
+}
